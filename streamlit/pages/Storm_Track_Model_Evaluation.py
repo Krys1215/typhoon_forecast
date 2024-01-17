@@ -95,10 +95,37 @@ def loss_function():
     st.code(code, language='python')
 
 
-def experiment10():
-    st.subheader("Experiment 10")
+def callbacks_function():
+    st.subheader("Callback Functions", divider='blue')
+    st.write("1. Early Stopping")
+    st.caption("Since our validation loss is decreasing but is not stable,"
+               " use early stopping to further increase the validation loss."
+               )
+    st.code('''
+    early_stopper = EarlyStopping(
+    monitor='val_loss',  # monitor the validation loss
+    patience=20,         # give 20 times without improvements
+    verbose=1,           # print the log
+    mode='min',          # the target should be minimize
+    restore_best_weights=True  # restore to the best mode
+    )
+    ''')
+
+    st.write("2. Learning Rate Scheduler")
+    st.caption('This setup is useful in training deep learning models '
+               'to adaptively change the learning rate, potentially leading to better training performance and convergence.')
+    st.code('''
+    def scheduler(epoch, lr):
+    if epoch < 10:          # well remain unchanged when epoch < 10
+        return lr
+    else:                   # decrease the learning rate when epoch > 10
+        return lr * np.exp(-0.1)
+    ''')
+
+def experiment1():
+    st.subheader("Experiment 1")
     data = [
-        [100, '20 * Replicas (8)', 0.0005, 'Patience = 20', 'Yes']
+        [50, '16 * Replicas (8)', 0.0005, 'No', 'No']
     ]
 
     columns = ["Epochs",
@@ -110,31 +137,289 @@ def experiment10():
 
     df = pd.DataFrame(data, columns=columns)
     st.dataframe(df, hide_index=True)
-    image_path = os.path.join('..', 'images', 'L10.png')
 
-    # 使用 PIL 库打开图片
-    image = Image.open(image_path)
+    col1, col2 = st.columns(2)
+    with col1:
+        st.image('https://raw.githubusercontent.com/Krys1215/typhoon_forecast/main/streamlit/images/L1.png')
+    with col2:
+        st.image('https://raw.githubusercontent.com/Krys1215/typhoon_forecast/main/streamlit/images/S1.png')
 
-    # 使用 Streamlit 的 st.image 函数显示图片
-    st.image(image, caption='示例图片', use_column_width=True)
+
+def experiment2():
+    st.subheader("Experiment 2")
+    data = [
+        [50, '6 * Replicas (8)', 0.0005, 'No', 'No']
+    ]
+
+    columns = ["Epochs",
+               "Batch Size",
+               "Validation Split Ratio",
+               "Early Stopping",
+               "LearningRateScheduler"
+               ]
+
+    df = pd.DataFrame(data, columns=columns)
+    st.dataframe(df, hide_index=True)
+
+    col1, col2 = st.columns(2)
+    with col1:
+        st.image('https://raw.githubusercontent.com/Krys1215/typhoon_forecast/main/streamlit/images/L2.png')
+    with col2:
+        st.image('https://raw.githubusercontent.com/Krys1215/typhoon_forecast/main/streamlit/images/S2.png')
 
 
-# def model_training():
-#     st.subheader("Model Training", divider='blue')
-#
-#     # experiment10()
-#
-#     # st.subheader("Experiment 2")
-#     # st.subheader("Experiment 3")
-#     # st.subheader("Experiment 4")
-#     # st.subheader("Experiment 5")
-#     # st.subheader("Experiment 6")
-#     # st.subheader("Experiment 7")
-#     # st.subheader("Experiment 8")
-#     # st.subheader("Experiment 9")
-#     # st.subheader("Experiment 10")
-#     # st.subheader("Experiment 11")
-#     # st.subheader("Experiment 12")
+def experiment3():
+    st.subheader("Experiment 3")
+    data = [
+        [50, '16 * Replicas (8)', 0.0005, 'Yes', 'No']
+    ]
+
+    columns = ["Epochs",
+               "Batch Size",
+               "Validation Split Ratio",
+               "Early Stopping",
+               "LearningRateScheduler"
+               ]
+
+    df = pd.DataFrame(data, columns=columns)
+    st.dataframe(df, hide_index=True)
+
+    col1, col2 = st.columns(2)
+    with col1:
+        st.image('https://raw.githubusercontent.com/Krys1215/typhoon_forecast/main/streamlit/images/L3.png')
+    with col2:
+        st.image('https://raw.githubusercontent.com/Krys1215/typhoon_forecast/main/streamlit/images/S3.png')
+
+
+def experiment4():
+    st.subheader("Experiment 4")
+    data = [
+        [100, '16 * Replicas (8)', 0.0005, 'Yes', 'No']
+    ]
+
+    columns = ["Epochs",
+               "Batch Size",
+               "Validation Split Ratio",
+               "Early Stopping",
+               "LearningRateScheduler"
+               ]
+
+    df = pd.DataFrame(data, columns=columns)
+    st.dataframe(df, hide_index=True)
+
+    col1, col2 = st.columns(2)
+    with col1:
+        st.image('https://raw.githubusercontent.com/Krys1215/typhoon_forecast/main/streamlit/images/L4.png')
+    with col2:
+        st.image('https://raw.githubusercontent.com/Krys1215/typhoon_forecast/main/streamlit/images/S4.png')
+
+
+
+def experiment5():
+    st.subheader("Experiment 5")
+    data = [
+        [100, '50 * Replicas (8)', 0.0005, 'Yes', 'No']
+    ]
+
+    columns = ["Epochs",
+               "Batch Size",
+               "Validation Split Ratio",
+               "Early Stopping",
+               "LearningRateScheduler"
+               ]
+
+    df = pd.DataFrame(data, columns=columns)
+    st.dataframe(df, hide_index=True)
+
+    col1, col2 = st.columns(2)
+    with col1:
+        st.image('https://raw.githubusercontent.com/Krys1215/typhoon_forecast/main/streamlit/images/L5.png')
+    with col2:
+        st.image('https://raw.githubusercontent.com/Krys1215/typhoon_forecast/main/streamlit/images/S5.png')
+
+
+def experiment6():
+    st.subheader("Experiment 6")
+    data = [
+        [100, '20 * Replicas (8)', 0.0005, 'Yes', 'No']
+    ]
+
+    columns = ["Epochs",
+               "Batch Size",
+               "Validation Split Ratio",
+               "Early Stopping",
+               "LearningRateScheduler"
+               ]
+
+    df = pd.DataFrame(data, columns=columns)
+    st.dataframe(df, hide_index=True)
+
+    col1, col2 = st.columns(2)
+    with col1:
+        st.image('https://raw.githubusercontent.com/Krys1215/typhoon_forecast/main/streamlit/images/L6.png')
+    with col2:
+        st.image('https://raw.githubusercontent.com/Krys1215/typhoon_forecast/main/streamlit/images/S6.png')
+
+
+def experiment7():
+    st.subheader("Experiment 7")
+    data = [
+        [100, '20 * Replicas (8)', 0.0005, 'Yes', 'Yes']
+    ]
+
+    columns = ["Epochs",
+               "Batch Size",
+               "Validation Split Ratio",
+               "Early Stopping",
+               "LearningRateScheduler"
+               ]
+
+    df = pd.DataFrame(data, columns=columns)
+    st.dataframe(df, hide_index=True)
+
+    col1, col2 = st.columns(2)
+    with col1:
+        st.image('https://raw.githubusercontent.com/Krys1215/typhoon_forecast/main/streamlit/images/L7.png')
+    with col2:
+        st.image('https://raw.githubusercontent.com/Krys1215/typhoon_forecast/main/streamlit/images/S7.png')
+
+
+def experiment8():
+    st.subheader("Experiment 8")
+    data = [
+        [100, '20 * Replicas (8)', 0.0005, 'No', 'Yes']
+    ]
+
+    columns = ["Epochs",
+               "Batch Size",
+               "Validation Split Ratio",
+               "Early Stopping",
+               "LearningRateScheduler"
+               ]
+
+    df = pd.DataFrame(data, columns=columns)
+    st.dataframe(df, hide_index=True)
+
+    col1, col2 = st.columns(2)
+    with col1:
+        st.image('https://raw.githubusercontent.com/Krys1215/typhoon_forecast/main/streamlit/images/L8.png')
+    with col2:
+        st.image('https://raw.githubusercontent.com/Krys1215/typhoon_forecast/main/streamlit/images/S8.png')
+
+
+
+def experiment9():
+    st.subheader("Experiment 9")
+    data = [
+        [100, '20 * Replicas (8)', 0.0005, 'No', 'Yes']
+    ]
+
+    columns = ["Epochs",
+               "Batch Size",
+               "Validation Split Ratio",
+               "Early Stopping",
+               "LearningRateScheduler"
+               ]
+
+    df = pd.DataFrame(data, columns=columns)
+    st.dataframe(df, hide_index=True)
+
+    col1, col2 = st.columns(2)
+    with col1:
+        st.image('https://raw.githubusercontent.com/Krys1215/typhoon_forecast/main/streamlit/images/L9.png')
+    with col2:
+        st.image('https://raw.githubusercontent.com/Krys1215/typhoon_forecast/main/streamlit/images/S9.png')
+
+
+
+def experiment10():
+    st.subheader("Experiment 10")
+    data = [
+        [100, '20 * Replicas (8)', 0.0005, 'Yes, Patience = 20', 'Yes']
+    ]
+
+    columns = ["Epochs",
+               "Batch Size",
+               "Validation Split Ratio",
+               "Early Stopping",
+               "LearningRateScheduler"
+               ]
+
+    df = pd.DataFrame(data, columns=columns)
+    st.dataframe(df, hide_index=True)
+
+    col1, col2 = st.columns(2)
+    with col1:
+        st.image('https://raw.githubusercontent.com/Krys1215/typhoon_forecast/main/streamlit/images/L10.png')
+    with col2:
+        st.image('https://raw.githubusercontent.com/Krys1215/typhoon_forecast/main/streamlit/images/S10.png')
+
+def experiment11():
+    st.subheader("Experiment 11")
+    data = [
+        [100, '20 * Replicas (8)', 0.0005, 'Yes, Patience=20', 'Yes']
+    ]
+
+    columns = ["Epochs",
+               "Batch Size",
+               "Validation Split Ratio",
+               "Early Stopping",
+               "LearningRateScheduler"
+               ]
+
+    df = pd.DataFrame(data, columns=columns)
+    st.dataframe(df, hide_index=True)
+
+    col1, col2 = st.columns(2)
+    with col1:
+        st.image('https://raw.githubusercontent.com/Krys1215/typhoon_forecast/main/streamlit/images/L11.png')
+    with col2:
+        st.image('https://raw.githubusercontent.com/Krys1215/typhoon_forecast/main/streamlit/images/S11.png')
+
+
+def experiment12():
+    st.subheader("Experiment 12")
+    data = [
+        [100, '20 * Replicas (8)', 0.0005, 'Yes, Patience=20', 'Yes, Epoch>30']
+    ]
+
+    columns = ["Epochs",
+               "Batch Size",
+               "Validation Split Ratio",
+               "Early Stopping",
+               "LearningRateScheduler"
+               ]
+
+    df = pd.DataFrame(data, columns=columns)
+    st.dataframe(df, hide_index=True)
+
+    col1, col2 = st.columns(2)
+    with col1:
+        st.image('https://raw.githubusercontent.com/Krys1215/typhoon_forecast/main/streamlit/images/L12.png')
+    with col2:
+        st.image('https://raw.githubusercontent.com/Krys1215/typhoon_forecast/main/streamlit/images/S12.png')
+
+
+
+
+def model_training():
+    st.subheader("Model Training", divider='blue')
+
+    experiment1()
+    experiment2()
+    experiment3()
+    experiment4()
+    experiment5()
+    experiment6()
+    experiment7()
+    experiment8()
+    experiment9()
+    experiment10()
+    experiment11()
+    experiment12()
+
+
+
 
 def main():
     st.image('https://media.licdn.com/dms/image/D5616AQEfLf154Ai_vQ/profile-displaybackgroundimage-shrink_350_1400/0'
@@ -151,7 +436,9 @@ def main():
 
     loss_function()
 
-    # model_training()
+    callbacks_function()
+
+    model_training()
 
 
 if __name__ == '__main__':

@@ -52,7 +52,7 @@ if __name__ == '__main__':
         page_title="Typhoon Forecast Dashboard - Main Page",
         page_icon="🌪️",
         layout="wide",
-        initial_sidebar_state="expanded",
+        initial_sidebar_state="collapsed",
     )
 
     main()

@@ -252,7 +252,7 @@ def read_model():
     parent1_dir = os.path.abspath(os.path.join(parent_dir, '..'))
 
     # 构建正确的文件路径
-    file_path = os.path.join(parent1_dir, 'model', 'CNN-LSTM-EXP10.keras')
+    file_path = os.path.join(parent1_dir, 'model', 'CNN-LSTM-20-50.keras')
     # WORKAROUND!!!!
     new_model = build_model()
 
@@ -262,7 +262,7 @@ def read_model():
 
     new_model.set_weights(weights)
 
-    return new_model
+    return loaded_model
 
 
 def title_header():

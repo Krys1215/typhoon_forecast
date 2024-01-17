@@ -252,7 +252,7 @@ def read_model():
     parent1_dir = os.path.abspath(os.path.join(parent_dir, '..'))
 
     # 构建正确的文件路径
-    file_path = os.path.join(parent1_dir, 'model', 'CNN-LSTM-EXP10-KAGGLE-TF-2-13')
+    file_path = os.path.join(parent1_dir, 'model', 'CNN-LSTM-EXP10-KAGGLE-TF-2-13.keras')
     # WORKAROUND!!!!
     new_model = build_model()
 

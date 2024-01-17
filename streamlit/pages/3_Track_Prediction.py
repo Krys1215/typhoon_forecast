@@ -8,6 +8,19 @@ import numpy as np
 import streamlit.components.v1 as components
 
 import tensorflow as tf
+import keras
+
+from keras.models import Sequential
+from keras.layers import Layer
+from keras.layers import Dense
+from keras.layers import Flatten
+from keras.layers import LSTM
+from keras.layers import RepeatVector
+from keras.layers import TimeDistributed
+from keras.layers import Conv1D
+from keras.layers import MaxPooling1D
+from keras.layers import Attention
+from keras.layers import Lambda
 
 from streamlit_folium import st_folium
 from sklearn.preprocessing import MinMaxScaler
@@ -219,6 +232,20 @@ def read_size_model():
     return loaded_model
 
 
+def build_model():
+    model = Sequential()
+    model.add(Conv1D(filters=64, kernel_size=3, activation='relu', input_shape=(24, 1)))
+    model.add(Conv1D(filters=64, kernel_size=3, activation='relu'))
+    model.add(MaxPooling1D(pool_size=2))
+    model.add(Flatten())
+    model.add(RepeatVector(3))
+    model.add(LSTM(200, activation='relu', return_sequences=True))
+    model.add(TimeDistributed(Dense(100, activation='relu')))
+    model.add(TimeDistributed(Dense(1)))
+    model.compile(loss='haversine_loss', optimizer='adam')  # 确保这里的loss函数是可用的
+    return model
+
+
 def read_model():
     current_dir = os.path.dirname(__file__)
     parent_dir = os.path.abspath(os.path.join(current_dir, '..'))
@@ -226,10 +253,16 @@ def read_model():
 
     # 构建正确的文件路径
     file_path = os.path.join(parent1_dir, 'model', 'CNN-LSTM-EXP10.keras')
+    # WORKAROUND!!!!
+    new_model = build_model()
 
     loaded_model = keras.models.load_model(file_path)
 
-    return loaded_model
+    weights = loaded_model.get_weights()
+
+    new_model.set_weights(weights)
+
+    return new_model
 
 
 def title_header():

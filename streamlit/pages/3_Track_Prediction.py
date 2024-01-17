@@ -262,7 +262,7 @@ def read_model():
 
     new_model.set_weights(weights)
 
-    return new_model
+    return loaded_model
 
 
 def title_header():

@@ -9,3 +9,4 @@ seaborn==0.13.1
 streamlit_folium==0.16.0
 tensorflow==2.13.0
 statsmodels==0.14.1
+xgboost==2.0.2

@@ -98,7 +98,7 @@ def get_track_model():
     parent1_dir = os.path.abspath(os.path.join(parent_dir, '..'))
 
     # 构建正确的文件路径
-    file_path = os.path.join(parent1_dir, 'model', 'ridge_regression.pkl')
+    file_path = os.path.join(parent1_dir, 'model', 'track_best_stacked_model.pkl')
     with open(file_path, 'rb') as file:
         loaded_model = pickle.load(file)
     return loaded_model

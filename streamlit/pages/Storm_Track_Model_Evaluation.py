@@ -132,9 +132,9 @@ def haversine_loss():
 def ensemble_learning():
     st.subheader("Ensemble Learning - Stacking Models", divider='blue')
     tree_model_data = {
+        'BR + LR + XGBoost + Ridge(S)' : 2.2895016179340186,
         'BR + Lasso + RR + EN + LR(S)' : 2.2953221204147067,
         'BR + LR + Ridge + EN + Ridge(S)' : 2.3587328124676588,
-        'BR + LR + XGBoost + Ridge(S)' : 2.307910228440241,
         'BR + LR + EN + XGBoost + Ridge(S)' : 2.3083044536018837,
         'BR + LR + LGBM + Ridge(S)' : 2.305323363006786,
         'BR + LR + LGBM + GB + Ridge(S)' : 2.311113746038734,

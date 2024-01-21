@@ -28,7 +28,7 @@ def main():
     st.image('https://media.licdn.com/dms/image/D5616AQEfLf154Ai_vQ/profile-displaybackgroundimage-shrink_350_1400/0'
              '/1697114938690?e=1710979200&v=beta&t=d0iAStcRD9Mq2s0ae_M5qMBVX15An1wza0E_etroHmQ')
 
-    st.title("🌪️ Typhoon Forecast and Tracks Visualization by Using _CNN-LSTM_ and _Ensemble Learning_")
+    st.title("🌪️ Typhoon Track and Size Prediction by Using _Regression Ensemble Learning_")
 
     st.subheader('', divider='blue')
     st.subheader('🧮 Statistical Data of _Typhoon_')

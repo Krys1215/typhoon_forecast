@@ -5,7 +5,7 @@ import folium
 import pickle
 import streamlit.components.v1 as components
 from streamlit_folium import st_folium
-
+import time
 
 def read_model():
     current_dir = os.path.dirname(__file__)
@@ -158,6 +158,12 @@ def main():
 
     m = folium.Map(location=initial_coordinates[0], zoom_start=3)
     if on:
+        progress_text = "Predicting.."
+        my_bar = st.progress(0)
+        for percent_complete in range(100):
+            time.sleep(0.01)
+            my_bar.progress(percent_complete + 1, text=progress_text)
+        my_bar.empty()
         add_circle_on_map(m, df, id_no)
     else:
         add_circle_on_map_no_size(m, df, id_no)

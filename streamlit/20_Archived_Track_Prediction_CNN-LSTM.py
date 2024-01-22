@@ -53,7 +53,7 @@ def get_dataset_path():
     parent1_dir = os.path.abspath(os.path.join(parent_dir, ''))
 
     # 构建正确的文件路径
-    file_path = os.path.join(parent1_dir, 'resource', 'min_max_with_id_name.csv')
+    file_path = os.path.join(parent1_dir, 'resource', 'pages/min_max_with_id_name.csv')
     return file_path
 
 
